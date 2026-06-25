@@ -1,105 +1,126 @@
-let expr = "";
 let score = 0;
+let expr = "";
+let history = [];
 
 /* PANELS */
-function openPanel(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+function openApp(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-/* REAL IN-PAGE SEARCH (DuckDuckGo API) */
-async function searchWeb() {
-  const q = document.getElementById("searchInput").value;
+/* TAB SYSTEM */
+function newTab(){
+  const tab = document.createElement("div");
+  tab.className="tab";
+  tab.innerText="TAB";
+  document.getElementById("tabBar").appendChild(tab);
+}
+
+/* SEARCH ENGINE (IN PAGE) */
+async function search(){
+  const q = document.getElementById("search").value;
   const box = document.getElementById("results");
 
-  if (!q) return;
+  if(!q) return;
 
-  box.innerHTML = "Searching...";
+  history.push(q);
+  updateHistory();
+
+  box.innerHTML="Searching...";
 
   try {
     const res = await fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(q)}&format=json`);
     const data = await res.json();
 
-    let html = "";
+    let html="";
 
-    if (data.AbstractText) {
+    if(data.AbstractText){
       html += `<div class="result">
         <h3>${data.Heading}</h3>
         <p>${data.AbstractText}</p>
       </div>`;
     }
 
-    data.RelatedTopics?.slice(0, 10).forEach(r => {
-      if (r.Text) {
+    data.RelatedTopics?.slice(0,10).forEach(r=>{
+      if(r.Text){
         html += `<div class="result">${r.Text}</div>`;
       }
     });
 
-    box.innerHTML = html || "No results.";
-
+    box.innerHTML = html || "No results";
   } catch {
-    box.innerHTML = "Search error.";
+    box.innerHTML="Search failed";
   }
 }
 
-/* AI (upgrade later with API) */
-async function runAI() {
+/* AI CORE (plug API later) */
+async function askAI(){
   const input = document.getElementById("aiInput").value;
-  const out = document.getElementById("aiOutput");
+  document.getElementById("aiOut").innerText="Processing...";
 
-  out.innerText = "Thinking...";
-
-  setTimeout(() => {
-    out.innerText = "AI: " + input + " (connect OpenAI API for real intelligence)";
-  }, 600);
+  setTimeout(()=>{
+    document.getElementById("aiOut").innerText =
+      "AI Response: " + input + " (connect API for real intelligence)";
+  },500);
 }
 
-/* CALCULATOR */
-function press(v) {
-  expr += v;
-  document.getElementById("calcDisplay").value = expr;
-}
-
-function calc() {
-  try {
-    expr = eval(expr).toString();
-    document.getElementById("calcDisplay").value = expr;
-  } catch {
-    alert("Error");
-  }
-}
-
-function clearCalc() {
-  expr = "";
-  document.getElementById("calcDisplay").value = "";
-}
-
-/* GAME */
-function gameClick() {
-  score++;
-  document.getElementById("score").innerText = score;
-}
-
-/* TABS (BROWSER STYLE) */
-let tabCount = 1;
-
-function newTab() {
-  const tabs = document.getElementById("tabs");
-  const tab = document.createElement("div");
-  tab.className = "tab";
-  tab.innerText = "Tab " + tabCount++;
-  tabs.appendChild(tab);
-}
-
-/* APPS GENERATOR (200+ READY) */
-const apps = Array.from({length: 200}, (_, i) => "App " + (i + 1));
+/* APPS (200+ AUTO SYSTEM) */
+const apps = Array.from({length: 220}, (_,i)=>"App "+(i+1));
 
 const grid = document.getElementById("appsGrid");
 
-apps.forEach(name => {
-  const div = document.createElement("div");
-  div.className = "app";
-  div.innerText = name;
-  div.onclick = () => alert(name + " opened");
-  grid.appendChild(div);
+apps.forEach(a=>{
+  const d=document.createElement("div");
+  d.className="app";
+  d.innerText=a;
+  d.onclick=()=>alert(a+" launched");
+  grid.appendChild(d);
+});
+
+/* CALCULATOR */
+function buildCalc(){
+  const pad = document.getElementById("calcPad");
+  const keys = [
+    "7","8","9","/",
+    "4","5","6","*",
+    "1","2","3","-",
+    "0",".","=","+"
+  ];
+
+  keys.forEach(k=>{
+    const b=document.createElement("button");
+    b.innerText=k;
+    b.onclick=()=>handleCalc(k);
+    pad.appendChild(b);
+  });
+}
+buildCalc();
+
+function handleCalc(k){
+  if(k==="="){
+    try{
+      expr=eval(expr).toString();
+      document.getElementById("calcDisplay").value=expr;
+    }catch{}
+    return;
+  }
+  expr+=k;
+  document.getElementById("calcDisplay").value=expr;
+}
+
+/* GAME */
+function clickGame(){
+  score++;
+  document.getElementById("score").innerText=score;
+}
+
+/* HISTORY */
+function updateHistory(){
+  document.getElementById("historyBox").innerHTML =
+    history.map(h=>`<div class="result">${h}</div>`).join("");
+}
+
+/* OFFLINE MODE */
+window.addEventListener("offline",()=>{
+  openApp("game");
 });
