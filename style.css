@@ -1,19 +1,22 @@
 body {
   margin:0;
   font-family: Arial;
-  background:#070a12;
+  background:#05070f;
   color:white;
 }
 
-/* TOP */
+/* TOP BAR */
 .topbar {
   display:flex;
   gap:10px;
   padding:10px;
-  background:#0f1630;
+  background:#0b1225;
 }
 
-.logo { color:cyan; font-weight:bold; }
+.logo {
+  color:#00ffff;
+  font-weight:bold;
+}
 
 input {
   flex:1;
@@ -30,8 +33,8 @@ input {
 }
 
 .sidebar {
-  width:160px;
-  background:#0b1022;
+  width:170px;
+  background:#070d1c;
   display:flex;
   flex-direction:column;
 }
@@ -45,7 +48,7 @@ input {
 }
 
 .sidebar button:hover {
-  background:#1a2444;
+  background:#142044;
 }
 
 .main {
@@ -54,16 +57,13 @@ input {
   overflow:auto;
 }
 
-/* PANELS */
 .panel { display:none; }
 .panel.active { display:block; }
 
-/* RESULTS */
 .result {
-  background:#121b38;
+  background:#121a33;
   padding:10px;
   margin:10px 0;
-  border-radius:8px;
 }
 
 /* APPS */
@@ -74,20 +74,13 @@ input {
 }
 
 .app {
-  background:#121b38;
+  background:#121a33;
   padding:15px;
   text-align:center;
   cursor:pointer;
 }
 
-/* CALC */
-#calcPad {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  max-width:250px;
-}
-
-/* GAME */
+/* BIG BUTTON */
 .big {
   padding:20px;
   font-size:20px;
