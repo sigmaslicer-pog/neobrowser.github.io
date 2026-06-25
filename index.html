@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NeoBrowser OS</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<!-- TOP BAR (browser style) -->
+<div class="topbar">
+  <div class="logo">⚡ NeoBrowser</div>
+
+  <input id="searchInput" placeholder="Search the web..." />
+  <button onclick="searchWeb()">Search</button>
+
+  <button onclick="newTab()">＋ Tab</button>
+</div>
+
+<!-- TABS -->
+<div id="tabs" class="tabs"></div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <button onclick="openPanel('home')">Home</button>
+    <button onclick="openPanel('ai')">AI</button>
+    <button onclick="openPanel('apps')">Apps</button>
+    <button onclick="openPanel('calc')">Calculator</button>
+    <button onclick="openPanel('game')">Game</button>
+    <button onclick="openPanel('donate')">Donate</button>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- HOME / SEARCH RESULTS -->
+    <section id="home" class="panel active">
+      <h2>Search Results</h2>
+      <div id="results"></div>
+    </section>
+
+    <!-- AI -->
+    <section id="ai" class="panel">
+      <h2>AI Assistant</h2>
+      <textarea id="aiInput" placeholder="Ask anything..."></textarea>
+      <button onclick="runAI()">Ask</button>
+      <div id="aiOutput"></div>
+    </section>
+
+    <!-- APPS -->
+    <section id="apps" class="panel">
+      <h2>Apps Hub (Scalable 200+)</h2>
+      <div id="appsGrid" class="grid"></div>
+    </section>
+
+    <!-- CALCULATOR -->
+    <section id="calc" class="panel">
+      <h2>Calculator</h2>
+      <input id="calcDisplay" readonly />
+      <div class="calc">
+        <button onclick="press('7')">7</button><button onclick="press('8')">8</button><button onclick="press('9')">9</button><button onclick="press('/')">/</button>
+        <button onclick="press('4')">4</button><button onclick="press('5')">5</button><button onclick="press('6')">6</button><button onclick="press('*')">*</button>
+        <button onclick="press('1')">1</button><button onclick="press('2')">2</button><button onclick="press('3')">3</button><button onclick="press('-')">-</button>
+        <button onclick="press('0')">0</button><button onclick="press('.')">.</button><button onclick="calc()">=</button><button onclick="press('+')">+</button>
+        <button onclick="clearCalc()" class="wide">Clear</button>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="game" class="panel">
+      <h2>Offline Game</h2>
+      <button onclick="gameClick()" class="bigBtn">CLICK FAST</button>
+      <p>Score: <span id="score">0</span></p>
+    </section>
+
+    <!-- DONATE -->
+    <section id="donate" class="panel">
+      <h2>Donate</h2>
+      <a class="donate" href="https://www.paypal.com/donate" target="_blank">
+        Donate via PayPal
+      </a>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
