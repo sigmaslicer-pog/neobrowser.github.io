@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0f1a;
+  color: white;
+}
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #121a2b;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  color: cyan;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  background: #1b2440;
+  border: none;
+  color: white;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  height: calc(100vh - 50px);
+}
+
+.sidebar {
+  width: 180px;
+  background: #10182b;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar button {
+  padding: 12px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #1d2a4a;
+}
+
+.content {
+  flex: 1;
+  padding: 15px;
+  overflow: auto;
+}
+
+/* PANELS */
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* RESULTS */
+.result {
+  background: #1a2340;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+}
+
+/* APPS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.app {
+  background: #1a2340;
+  padding: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* CALC */
+.calc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 250px;
+}
+
+.calc button {
+  padding: 10px;
+}
+
+/* GAME */
+.bigBtn {
+  font-size: 20px;
+  padding: 20px;
+}
+
+/* DONATE */
+.donate {
+  padding: 15px;
+  background: gold;
+  color: black;
+  text-decoration: none;
+}
