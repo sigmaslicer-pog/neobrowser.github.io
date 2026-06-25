@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GOD MODE Browser OS</title>
+<title>FINAL BOSS OS</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,69 +11,77 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <div class="logo">⚡ GOD MODE OS</div>
+  <div class="logo">🧠 FINAL BOSS OS</div>
 
-  <input id="search" placeholder="Search everything..." />
-  <button onclick="search()">Search</button>
-  <button onclick="newTab()">+ Tab</button>
+  <input id="urlBar" placeholder="Search or enter query..." />
+  <button onclick="go()">GO</button>
+  <button onclick="newTab()">+ TAB</button>
 </div>
 
-<!-- TABS -->
-<div id="tabBar" class="tabBar"></div>
+<!-- TAB BAR -->
+<div id="tabs"></div>
 
-<!-- LAYOUT -->
+<!-- MAIN -->
 <div class="layout">
 
   <!-- SIDEBAR -->
   <div class="sidebar">
-    <button onclick="openApp('home')">Home</button>
-    <button onclick="openApp('ai')">AI</button>
+    <button onclick="openApp('home')">Browser</button>
+    <button onclick="openApp('ai')">AI Brain</button>
     <button onclick="openApp('apps')">Apps</button>
-    <button onclick="openApp('calc')">Calculator</button>
-    <button onclick="openApp('game')">Game</button>
+    <button onclick="openApp('bookmarks')">Bookmarks</button>
     <button onclick="openApp('history')">History</button>
+    <button onclick="openApp('game')">Offline Mode</button>
   </div>
 
-  <!-- MAIN -->
+  <!-- CONTENT -->
   <div class="main">
 
+    <!-- BROWSER -->
     <div id="home" class="panel active">
-      <h2>Search Results</h2>
+      <h2>Web Results</h2>
       <div id="results"></div>
     </div>
 
+    <!-- AI -->
     <div id="ai" class="panel">
-      <h2>AI Core</h2>
+      <h2>AI Brain</h2>
       <textarea id="aiInput"></textarea>
-      <button onclick="askAI()">Run AI</button>
+      <button onclick="askAI()">Ask Brain</button>
       <div id="aiOut"></div>
     </div>
 
+    <!-- APPS -->
     <div id="apps" class="panel">
-      <h2>Apps (200+ system)</h2>
+      <h2>App Universe</h2>
       <div id="appsGrid"></div>
     </div>
 
-    <div id="calc" class="panel">
-      <h2>Calculator</h2>
-      <input id="calcDisplay" readonly />
-      <div id="calcPad"></div>
+    <!-- BOOKMARKS -->
+    <div id="bookmarks" class="panel">
+      <h2>Bookmarks</h2>
+      <div id="bookmarkList"></div>
     </div>
 
-    <div id="game" class="panel">
-      <h2>Offline Game</h2>
-      <button onclick="clickGame()" class="big">CLICK</button>
-      <p>Score: <span id="score">0</span></p>
-    </div>
-
+    <!-- HISTORY -->
     <div id="history" class="panel">
-      <h2>Search History</h2>
-      <div id="historyBox"></div>
+      <h2>History</h2>
+      <div id="historyList"></div>
+    </div>
+
+    <!-- GAME -->
+    <div id="game" class="panel">
+      <h2>Offline Survival Mode</h2>
+      <button onclick="clicker()" class="big">CLICK</button>
+      <p>Score: <span id="score">0</span></p>
     </div>
 
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="apps.js"></script>
+<script src="plugins.js"></script>
+<script src="core.js"></script>
+
 </body>
 </html>
