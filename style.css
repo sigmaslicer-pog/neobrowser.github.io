@@ -1,115 +1,94 @@
 body {
-  margin: 0;
+  margin:0;
   font-family: Arial;
-  background: #0b0f1a;
-  color: white;
+  background:#070a12;
+  color:white;
 }
 
-/* TOP BAR */
+/* TOP */
 .topbar {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  background: #121a2b;
-  align-items: center;
+  display:flex;
+  gap:10px;
+  padding:10px;
+  background:#0f1630;
 }
 
-.logo {
-  font-weight: bold;
-  color: cyan;
-}
+.logo { color:cyan; font-weight:bold; }
 
 input {
-  flex: 1;
-  padding: 10px;
-  background: #1b2440;
-  border: none;
-  color: white;
+  flex:1;
+  padding:10px;
+  background:#111a33;
+  border:none;
+  color:white;
 }
 
 /* LAYOUT */
 .layout {
-  display: flex;
-  height: calc(100vh - 50px);
+  display:flex;
+  height:calc(100vh - 50px);
 }
 
 .sidebar {
-  width: 180px;
-  background: #10182b;
-  display: flex;
-  flex-direction: column;
+  width:160px;
+  background:#0b1022;
+  display:flex;
+  flex-direction:column;
 }
 
 .sidebar button {
-  padding: 12px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
+  padding:12px;
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
 }
 
 .sidebar button:hover {
-  background: #1d2a4a;
+  background:#1a2444;
 }
 
-.content {
-  flex: 1;
-  padding: 15px;
-  overflow: auto;
+.main {
+  flex:1;
+  padding:15px;
+  overflow:auto;
 }
 
 /* PANELS */
-.panel {
-  display: none;
-}
-
-.panel.active {
-  display: block;
-}
+.panel { display:none; }
+.panel.active { display:block; }
 
 /* RESULTS */
 .result {
-  background: #1a2340;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
+  background:#121b38;
+  padding:10px;
+  margin:10px 0;
+  border-radius:8px;
 }
 
 /* APPS */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+#appsGrid {
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:10px;
 }
 
 .app {
-  background: #1a2340;
-  padding: 20px;
-  cursor: pointer;
-  text-align: center;
+  background:#121b38;
+  padding:15px;
+  text-align:center;
+  cursor:pointer;
 }
 
 /* CALC */
-.calc {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 250px;
-}
-
-.calc button {
-  padding: 10px;
+#calcPad {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  max-width:250px;
 }
 
 /* GAME */
-.bigBtn {
-  font-size: 20px;
-  padding: 20px;
-}
-
-/* DONATE */
-.donate {
-  padding: 15px;
-  background: gold;
-  color: black;
-  text-decoration: none;
+.big {
+  padding:20px;
+  font-size:20px;
 }
